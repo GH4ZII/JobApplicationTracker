@@ -75,11 +75,53 @@ npm test
 
 Without a database, integration tests are skipped.
 
+## Root scripts
+
+From the project root:
+
+```bash
+npm run dev:backend    # Start API
+npm run dev:frontend   # Start UI
+npm run build          # Build both apps
+npm run test           # Backend tests
+```
+
+## Sample data
+
+After migrations, seed demo applications:
+
+```bash
+cd backend
+npm run db:seed
+```
+
+## Deployment
+
+### Frontend (Vercel)
+
+1. Import the repo and set the root directory to `frontend`.
+2. Add environment variable `VITE_API_URL` pointing to your deployed API.
+3. Build command: `npm run build` (default). Output: `dist`.
+
+`frontend/vercel.json` includes SPA routing rewrites.
+
+### Backend (Railway)
+
+1. Create a service from the repo with root directory `backend`.
+2. Add PostgreSQL (or link Supabase `DATABASE_URL`).
+3. Set `CORS_ORIGIN` to your Vercel URL.
+4. Railway uses `backend/railway.toml` to build, run migrations, and start the API.
+
+### Supabase database
+
+Use the **Transaction pooler** connection string for `DATABASE_URL` in production serverless setups when recommended by Supabase.
+
 ## Scripts
 
 | Location | Command | Description |
 |----------|---------|-------------|
 | backend | `npm run dev` | Start API with hot reload |
 | backend | `npm test` | Run Vitest tests |
+| backend | `npm run db:seed` | Load sample applications |
 | frontend | `npm run dev` | Start Vite dev server |
 | frontend | `npm run build` | Production build |

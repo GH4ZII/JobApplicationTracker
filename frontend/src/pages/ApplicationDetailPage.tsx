@@ -28,14 +28,22 @@ export function ApplicationDetailPage() {
 
   async function handleStatusChange(status: ApplicationStatus) {
     if (!id) return;
-    const updated = await updateApplicationStatus(id, status);
-    setApplication(updated);
+    try {
+      const updated = await updateApplicationStatus(id, status);
+      setApplication(updated);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to update status");
+    }
   }
 
   async function handleDelete() {
     if (!id || !confirm("Delete this application?")) return;
-    await deleteApplication(id);
-    navigate("/applications");
+    try {
+      await deleteApplication(id);
+      navigate("/applications");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to delete");
+    }
   }
 
   if (loading) return <p className="text-slate-600">Loading...</p>;
