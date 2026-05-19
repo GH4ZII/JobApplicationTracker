@@ -1,8 +1,20 @@
 import { createApp } from "./app.js";
+import { initializeDatabase } from "./config/database.js";
 import { env } from "./config/env.js";
 
-const app = createApp();
+async function main() {
+  await initializeDatabase();
 
-app.listen(env.port, () => {
-  console.log(`Server running on http://localhost:${env.port}`);
+  const app = createApp();
+
+  const host = process.env.HOST ?? "127.0.0.1";
+
+  app.listen(env.port, host, () => {
+    console.log(`Server running on http://${host}:${env.port}`);
+  });
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
 });

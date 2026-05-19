@@ -2,6 +2,8 @@
 
 A full-stack web app to manage job applications, interviews, deadlines, notes, and statuses.
 
+> **Offline desktop (Windows):** On branch `feature/desktop-sqlite`, run a local SQLite + Tauri app with no Supabase. See [DESKTOP.md](./DESKTOP.md).
+
 ## Tech stack
 
 - **Frontend:** React, Vite, TypeScript, Tailwind CSS
@@ -14,6 +16,7 @@ A full-stack web app to manage job applications, interviews, deadlines, notes, a
 JobApplicationTracker/
   backend/     # REST API
   frontend/    # React UI
+  desktop/     # Tauri Windows shell (desktop branch)
 ```
 
 ## Prerequisites
