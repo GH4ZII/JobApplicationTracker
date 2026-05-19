@@ -21,6 +21,8 @@ JobApplicationTracker/
 - Node.js 20+
 - PostgreSQL database (e.g. [Supabase](https://supabase.com))
 
+> **First time?** See [SETUP.md](./SETUP.md) — Supabase DB and sample data may already be prepared for your project.
+
 ## Backend setup
 
 ```bash
