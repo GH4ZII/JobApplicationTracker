@@ -8,6 +8,9 @@ describe.skipIf(!hasDatabase)("Applications API", () => {
   let app: Express;
 
   beforeAll(async () => {
+    const { initializeDatabase } = await import("../src/config/database.js");
+    await initializeDatabase();
+
     const { createApp } = await import("../src/app.js");
     app = createApp();
   });

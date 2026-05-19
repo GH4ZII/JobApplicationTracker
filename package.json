@@ -4,8 +4,11 @@
   "scripts": {
     "dev:backend": "npm run dev --prefix backend",
     "dev:frontend": "npm run dev --prefix frontend",
-    "build": "npm run build --prefix backend && npm run build --prefix frontend",
+    "build": "npm run build --prefix backend && npm run build --prefix frontend && npm run copy:frontend --prefix backend",
+    "start": "npm run start --prefix backend",
     "test": "npm test --prefix backend",
-    "db:migrate": "npm run db:migrate --prefix backend"
+    "db:migrate": "npm run db:migrate --prefix backend",
+    "desktop:dev": "npm run dev --prefix desktop",
+    "desktop:build": "npm run build:sidecar --prefix backend && npm run build --prefix desktop"
   }
 }
