@@ -50,3 +50,11 @@ API base URL: `http://localhost:3001`
 ```
 
 Status values: `Interested`, `Applied`, `Interview`, `Offer`, `Rejected`.
+
+## Tests
+
+```bash
+npm test
+```
+
+Set `DATABASE_URL` in `.env` to run integration tests. Without it, tests are skipped.

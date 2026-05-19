@@ -9,7 +9,10 @@ function requireEnv(name: string): string {
 }
 
 export const env = {
-  databaseUrl: requireEnv("DATABASE_URL"),
   port: Number(process.env.PORT ?? 3001),
   corsOrigin: process.env.CORS_ORIGIN ?? "http://localhost:5173",
 };
+
+export function getDatabaseUrl(): string {
+  return requireEnv("DATABASE_URL");
+}
