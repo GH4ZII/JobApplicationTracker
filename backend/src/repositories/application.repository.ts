@@ -29,17 +29,21 @@ export class ApplicationRepository {
       where.status = filters.status;
     }
 
-    if (filters?.search) {
-      where.OR = [
-        { companyName: { contains: filters.search, mode: "insensitive" } },
-        { jobTitle: { contains: filters.search, mode: "insensitive" } },
-      ];
-    }
-
-    return prisma.application.findMany({
+    const rows = await prisma.application.findMany({
       where,
       orderBy: { updatedAt: "desc" },
     });
+
+    if (!filters?.search) {
+      return rows;
+    }
+
+    const term = filters.search.toLowerCase();
+    return rows.filter(
+      (row) =>
+        row.companyName.toLowerCase().includes(term) ||
+        row.jobTitle.toLowerCase().includes(term),
+    );
   }
 
   async findById(id: string): Promise<Application | null> {
