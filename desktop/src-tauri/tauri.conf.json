@@ -33,7 +33,10 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "externalBin": ["binaries/job-tracker-api"]
+    "externalBin": ["binaries/job-tracker-api"],
+    "resources": {
+      "bundle-resources/": "bundle-resources/"
+    }
   },
   "plugins": {
     "shell": {

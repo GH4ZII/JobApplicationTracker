@@ -9,6 +9,6 @@
     "test": "npm test --prefix backend",
     "db:migrate": "npm run db:migrate --prefix backend",
     "desktop:dev": "npm run dev --prefix desktop",
-    "desktop:build": "npm run build:sidecar --prefix backend && npm run build --prefix desktop"
+    "desktop:build": "npm run build:sidecar --prefix backend && node desktop/scripts/sync-bundle-resources.mjs && npm run build --prefix desktop"
   }
 }

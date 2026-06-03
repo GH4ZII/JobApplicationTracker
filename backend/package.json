@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "build:sidecar": "npm run build && npm run copy:frontend && npm run pkg:win",
+    "build:sidecar": "npm run build && npm run copy:frontend && npm run pkg:win && node scripts/copy-sidecar-assets.mjs",
+    "copy:sidecar-assets": "node scripts/copy-sidecar-assets.mjs",
     "copy:frontend": "node scripts/copy-frontend.mjs",
     "pkg:win": "pkg dist/server.js --targets node20-win-x64 --output ../desktop/src-tauri/binaries/job-tracker-api-x86_64-pc-windows-msvc.exe",
     "start": "node dist/server.js",
+    "desktop:build": "npm run desktop:build --prefix ..",
     "test": "vitest run",
     "test:watch": "vitest",
     "db:generate": "prisma generate",

@@ -72,6 +72,25 @@ npm run start
 | Tauri build feiler | Installer VS Build Tools (C++) |
 | Port 3001 opptatt | Stopp gammel `npm run dev` / backend-prosess |
 | Tom app første gang | Normalt — seed kjører automatisk ved første oppstart |
+| Appen fryser / «Svarer ikke» | Backend startet ikke. Se loggfilen under (eller kjør sidecar manuelt) |
+
+### Se feilmeldinger
+
+**Loggfil (etter nyere build):**
+
+`%APPDATA%\JobApplicationTracker\app.log`
+
+**Test backend alene i PowerShell:**
+
+```powershell
+cd desktop\src-tauri\binaries
+$env:PORT=3001
+$env:SERVE_FRONTEND="true"
+$env:NODE_ENV="production"
+.\job-tracker-api-x86_64-pc-windows-msvc.exe
+```
+
+Hvis dette krasjer, vises feilen i terminalen (f.eks. Prisma `MODULE_NOT_FOUND`). Lukk appen før `npm run desktop:build`.
 
 ## Branch
 

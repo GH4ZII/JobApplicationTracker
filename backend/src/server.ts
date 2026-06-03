@@ -1,3 +1,4 @@
+import "./patch-prisma-pkg.js";
 import { createApp } from "./app.js";
 import { initializeDatabase } from "./config/database.js";
 import { env } from "./config/env.js";
